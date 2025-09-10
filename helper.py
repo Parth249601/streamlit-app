@@ -3,14 +3,11 @@ from collections import Counter
 import pandas as pd
 import emoji
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
-from gensim import corpora
-from gensim.models import LdaModel
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 import spacy
 import networkx as nx
 import re
-import google.generativeai as genai
 
 # Initialize libraries
 sentiments = SentimentIntensityAnalyzer()
