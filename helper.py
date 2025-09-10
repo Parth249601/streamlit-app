@@ -2,12 +2,33 @@ from wordcloud import WordCloud
 from collections import Counter
 import pandas as pd
 import emoji
+import nltk 
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 import spacy
 import networkx as nx
 import re
+# This code runs once when the module is imported, ensuring data is ready.
+try:
+    nltk.data.find('sentiment/vader_lexicon.zip')
+except LookupError:
+    nltk.download('vader_lexicon')
+
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt')
+
+try:
+    nltk.data.find('corpora/stopwords')
+except LookupError:
+    nltk.download('stopwords')
+
+# --- Initialize libraries ---
+# Now this will succeed because the lexicon is guaranteed to be downloaded.
+sentiments = SentimentIntensityAnalyzer()
+nlp = spacy.load('en_core_web_sm')
 
 # Initialize libraries
 sentiments = SentimentIntensityAnalyzer()

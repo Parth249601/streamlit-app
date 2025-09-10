@@ -7,33 +7,6 @@ import networkx as nx
 import nltk
 import spacy
 
-@st.cache_resource
-def download_models():
-    try:
-        nltk.data.find('sentiment/vader_lexicon.zip')
-    except nltk.downloader.DownloadError:
-        nltk.download('vader_lexicon')
-    try:
-        nltk.data.find('tokenizers/punkt')
-    except nltk.downloader.DownloadError:
-        nltk.download('punkt')
-    try:
-        nltk.data.find('corpora/stopwords')
-    except nltk.downloader.DownloadError:
-        nltk.download('stopwords')
-    
-    # Download a SpaCy model (e.g., 'en_core_web_sm')
-    # You can check if it's installed first to avoid re-downloading
-    try:
-        spacy.load('en_core_web_sm')
-    except OSError:
-        print('Downloading language model for the first time. This may take a while...')
-        from spacy.cli import download
-        download('en_core_web_sm')
-
-# Call this function at the beginning of your dashboard.py
-download_models()
-
 # --- Streamlit UI Setup ---
 st.sidebar.title("WhatsApp Chat Analyzer")
 st.sidebar.markdown("Analyze your WhatsApp chats to gain insights into your conversations.")
