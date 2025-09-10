@@ -198,7 +198,7 @@ def get_agentic_response(df, question):
     """Uses the Gemini model with a toolbox of functions to answer questions."""
     try:
         # IMPORTANT: Replace "YOUR_API_KEY" with your actual key
-        genai.configure(api_key="AIzaSyDwCiYitGboPF-xCPUbUSbBLg7X9zSiEZU") 
+        genai.configure(api_key="YOUR_API_KEY") 
     except Exception as e:
         return f"API Key configuration error: {e}"
 
