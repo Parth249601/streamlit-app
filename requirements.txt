@@ -6,7 +6,7 @@ seaborn
 wordcloud
 emoji
 nltk
-gensim
 spacy
 networkx
+genism
 google-generativeai
