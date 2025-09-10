@@ -9,6 +9,7 @@ from nltk.corpus import stopwords
 import spacy
 import networkx as nx
 import re
+import os
 # This code runs once when the module is imported, ensuring data is ready.
 try:
     nltk.data.find('sentiment/vader_lexicon.zip')
