@@ -70,24 +70,6 @@ def sentiment_timeline(selected_user, df):
     timeline['time'] = timeline['month'] + '-' + timeline['year'].astype(str)
     return timeline
 
-def topic_modeling(selected_user, df):
-    if selected_user != 'Overall':
-        df = df[df['user'] == selected_user]
-    temp = df[(df['user'] != 'group_notification') & (df['message'] != '<Media omitted>\n')]
-    stop_words = set(stopwords.words('english'))
-    with open('stop_hinglish.txt', 'r', encoding='utf-8') as f:
-        custom_stop_words = f.read().splitlines()
-    stop_words.update(custom_stop_words)
-    def clean_text(text):
-        tokens = word_tokenize(text.lower())
-        return [word for word in tokens if word.isalpha() and word not in stop_words and len(word) > 2]
-    processed_docs = temp['message'].apply(clean_text)
-    dictionary = corpora.Dictionary(processed_docs)
-    corpus = [dictionary.doc2bow(doc) for doc in processed_docs]
-    if not corpus or not dictionary: return []
-    lda_model = LdaModel(corpus, num_topics=5, id2word=dictionary, passes=15)
-    return lda_model.print_topics(num_words=5)
-
 def named_entity_recognition(selected_user, df):
     if selected_user != 'Overall':
         df = df[df['user'] == selected_user]
