@@ -30,10 +30,6 @@ except LookupError:
 sentiments = SentimentIntensityAnalyzer()
 nlp = spacy.load('en_core_web_sm')
 
-# Initialize libraries
-sentiments = SentimentIntensityAnalyzer()
-nlp = spacy.load('en_core_web_sm')
-
 # --- Standard Analysis Functions ---
 
 def fetch_stats(selected_user, df):
