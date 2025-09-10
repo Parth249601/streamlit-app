@@ -8,5 +8,4 @@ emoji
 nltk
 spacy
 networkx
-genism
-google-generativeai
+

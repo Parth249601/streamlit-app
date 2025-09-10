@@ -170,22 +170,7 @@ if uploaded_file is not None:
                     fig, ax = plt.subplots()
                     sns.barplot(x='avg_response_time_minutes', y='user', data=response_df, palette='magma', ax=ax)
                     st.pyplot(fig)
-            # --- Agentic AI Chatbot Section ---
-            st.title("Chat with Your Data 🤖")
-            st.markdown("Ask a question in plain English and let the AI agent analyze the chat for you.")
-
-            # Get user's question
-            user_question = st.text_input("e.g., Who sent the most emojis? or What was the overall sentiment in June 2025?")
-
-            if st.button("Ask AI Agent"):
-                if user_question:
-                    with st.spinner("The AI agent is analyzing..."):
-                        # Pass the entire DataFrame to the helper function
-                        response = helper.get_gemini_response(df, user_question)
-                        st.markdown("### Agent's Answer:")
-                        st.write(response)
-                else:
-                    st.warning("Please ask a question.")
+            
 
 else:
     st.info("Awaiting for a WhatsApp chat file to be uploaded.")
